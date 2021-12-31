@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { GetUsersService } from './get-users/get-user.service';
+import { QueryBus } from '@nestjs/cqrs';
+import { GetUsersQuery } from './get-users/app/get-users.query';
 
 @Controller('users')
 export class UsersController {
-  constructor(private usersService: GetUsersService) {}
+  constructor(private readonly queryBus: QueryBus) {}
 
   @Get('all')
   findAll() {
-    return this.usersService.findAll();
+    return this.queryBus.execute(new GetUsersQuery());
   }
 }

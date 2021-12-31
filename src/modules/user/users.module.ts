@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
+import { CqrsModule } from '@nestjs/cqrs';
 import { UsersController } from './users.controller';
-import { GetUsersService } from './get-users/get-user.service';
+import { GetUsersHandler } from './get-users/app/get-users.handler'
+
+const queryHandlers = [GetUsersHandler];
 
 @Module({
+  imports: [CqrsModule],
   controllers: [UsersController],
-  providers: [GetUsersService],
+  providers: [...queryHandlers],
 })
 export class UsersModule {}
