@@ -1,5 +1,6 @@
-import { Controller, Get, Body } from '@nestjs/common';
+import { Controller, Get, Body, Post } from '@nestjs/common';
 import { QueryBus } from '@nestjs/cqrs';
+import { CreateUserCommand } from './ create/app/create-user.command';
 import { GetUsersQuery } from './all/app/get-users.query';
 import { GetUserByIdQuery } from './id/app/get-user-by-id.query';
 
@@ -15,5 +16,10 @@ export class UsersController {
   @Get('id')
   findById(@Body() dto: { id : number }) {
     return this.queryBus.execute(new GetUserByIdQuery(dto.id));
+  }
+
+  @Post('create')
+  create(@Body() dto: { id : number, name : string }) {
+    return this.queryBus.execute(new CreateUserCommand(dto.id, dto.name));
   }
 }
