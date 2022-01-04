@@ -14,7 +14,7 @@ export class UsersController {
   }
 
   @Get('id')
-  findById(@Body() dto: { id : number }) {
+  findOneById(@Body() dto: { id : number }) {
     return this.queryBus.execute(new GetUserByIdQuery(dto.id));
   }
 
