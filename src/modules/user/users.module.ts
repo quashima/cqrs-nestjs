@@ -9,6 +9,8 @@ import { CreateUserHandler } from './api/create/app/create-user.handler';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../../shared/infrastructure/entities/user.entity';
 
+import { UserModel } from './domain/user.model';
+
 const queryHandlers = [GetUsersHandler, GetUserByIdHandler];
 
 const commandHandlers = [CreateUserHandler]
@@ -16,6 +18,6 @@ const commandHandlers = [CreateUserHandler]
 @Module({
   imports: [CqrsModule, TypeOrmModule.forFeature([User])],
   controllers: [UsersController],
-  providers: [...queryHandlers, ...commandHandlers],
+  providers: [...queryHandlers, ...commandHandlers, UserModel],
 })
 export class UsersModule {}
