@@ -1,8 +1,8 @@
 import { Controller, Get, Body, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { CreateUserCommand } from './api/create/app/create-user.command';
-import { GetUsersQuery } from './api/all/app/get-users.query';
-import { GetUserByIdQuery } from './api/id/app/get-user-by-id.query';
+import { CreateUserCommand } from '../application/create/create-user.command';
+import { GetUsersQuery } from '../application/all/get-users.query';
+import { GetUserByIdQuery } from '../application/id/get-user-by-id.query';
 
 @Controller('users')
 export class UsersController {

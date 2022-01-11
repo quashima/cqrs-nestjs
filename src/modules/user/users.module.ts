@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
-import { UsersController } from './users.controller';
+import { UsersController } from './interface-adapter/users.controller';
 
-import { GetUsersHandler } from './api/all/app/get-users.handler'
-import { GetUserByIdHandler } from './api/id/app/get-user-by-id.handler';
+import { GetUsersHandler } from './application/all/get-users.handler'
+import { GetUserByIdHandler } from './application/id/get-user-by-id.handler';
 
-import { CreateUserHandler } from './api/create/app/create-user.handler';
+import { CreateUserHandler } from './application/create/create-user.handler';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../../shared/infrastructure/entities/user.entity';
 
