@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../../../../shared/infrastructure/entities/user.entity';
 import { Repository } from 'typeorm';
 import { GetUsersQuery } from './get-users.query';
-import { UserModel } from '../../domain/user.model';
+import { UserModel } from '../../domain-model/user.model';
 
 @QueryHandler(GetUsersQuery)
 export class GetUsersHandler implements IQueryHandler<GetUsersQuery> {
